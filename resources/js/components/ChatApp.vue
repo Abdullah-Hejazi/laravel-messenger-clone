@@ -1,33 +1,40 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <MessagesView
-                class="col-8"
-                :messages="messages"
-                :selected_friend="selected_friend"
-                :user="user"
-                @send_message="SendMessage"
-            />
-            <friends-list :friends="friends" class="col-4" @selected="SelectFriend" />
-        </div>
+    <div class="row mx-0">
+        <NavBar :user="user" :url="url" />
+
+        <FriendsList :friends="friends" @selected="SelectFriend" />
+
+        <MessagesView
+            class="col-8"
+            :messages="messages"
+            :selected_friend="selected_friend"
+            :user="user"
+            @send_message="SendMessage"
+        />
+
     </div>
 </template>
 
 <script>
     import FriendsList from './FriendsList.vue';
     import MessagesView from './MessagesView.vue';
+    import NavBar from './NavBar.vue';
 
     export default {
         props: {
             user: {
                 type: Object,
                 required: true
+            },
+            url: {
+                type: String,
             }
         },
 
         components: {
             FriendsList,
-            MessagesView
+            MessagesView,
+            NavBar
         },
     
         data () {
@@ -40,7 +47,6 @@
 
         mounted() {
             Echo.private(`messages.${this.user.id}`).listen('NewMessage', (e) => {
-                console.log('here')
                 this.handleIncoming(e.message)
             })
             

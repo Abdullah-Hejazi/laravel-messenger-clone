@@ -1,15 +1,10 @@
 @extends('layouts.app')
+
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12">
-            <div class="card-body" id="app">
-                <chat-app :user="{{ auth()->user() }}" />
-            </div>
-        </div>
-    </div>
+<div id="app">
+    <chat-app :user="{{ auth()->user() }}" :url="'{{ url('/') }}'" />
 </div>
 @endsection

@@ -21,6 +21,12 @@ window.Vue = require('vue');
 
 Vue.component('chat-app', require('./components/ChatApp.vue').default);
 
+
+import 'vue-awesome/icons'
+import Icon from 'vue-awesome/components/Icon'
+
+Vue.component('v-icon', Icon)
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

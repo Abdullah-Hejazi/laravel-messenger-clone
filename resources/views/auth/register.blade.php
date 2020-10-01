@@ -12,7 +12,7 @@
                     <div class="form-group row">
                         <input id="name" type="text" class="form-input" placeholder="Enter your Name" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                        @error('email')
+                        @error('name')
                             <span class="error-message">
                                 <strong>{{ $message }}</strong>
                             </span>
