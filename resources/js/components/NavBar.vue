@@ -98,7 +98,6 @@
     width: 70px;
     height: 70px;
     position: relative;
-    left: 15px;
     top: 15px;
 }
 

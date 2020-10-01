@@ -23,3 +23,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/contacts', [App\Http\Controllers\FriendController::class, 'index']);
 Route::get('/messages/{id}', [App\Http\Controllers\MessageController::class, 'index']);
 Route::post('/messages/{id}', [App\Http\Controllers\MessageController::class, 'send']);
+
+Route::post('/message/{id}/read', [App\Http\Controllers\MessageController::class, 'read']);

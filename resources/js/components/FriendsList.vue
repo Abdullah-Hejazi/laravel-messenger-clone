@@ -5,11 +5,8 @@
                 <v-icon name="search" class="search-icon" />
                 <input type="text" name="search" placeholder="Search..." class="search-input" v-model="search">
             </div>
-            <div class="add-user" @click="AddUser">
-                <div class="add-user-button">
-                    <v-icon name="user-plus" class="add-user-icon" scale="2" />
-                </div>
-            </div>
+
+            <v-icon name="user-plus" class="add-user-icon" @click="AddUser" />
         </div>
         <div v-for="(friend, index) in friends_list" :key="index" @click="SelectFriend(friend.friend, index)">
             <div :class="currentIndex != index ? 'friend':'friend friend_selected'">
@@ -19,7 +16,12 @@
                 </div>
                 <div class="friend-info">
                     <div class="friend-name">{{ friend.friend.name }}</div>
-                    <div class="friend-last-message">Hello there my friend how are you doing today Hello there my friend how are you doing todayHello there my friend how are you doing today</div>
+                    <div class="friend-last-message" v-if="friend.last_message">{{friend.last_message.text}}</div>
+               
+                    <div class="notification-line" v-if="friend.unread_count > 0">
+                        <div class="notification"></div>
+                        <div class="notification-text" > {{friend.unread_count}} Unread Messeges </div>
+                    </div>
                 </div>
             </div>
             <div class="divider"></div>
@@ -54,7 +56,7 @@
             SelectFriend: function (friend, index) {
                 this.currentIndex = index
 
-                this.$emit('selected', friend)
+                this.$emit('selected', {friend: friend, index: index})
             },
 
             AddUser: function () {
@@ -87,7 +89,7 @@
     .friends-container {
         height: 100vh;
         overflow-y: auto;
-        width: 500px;
+        width: 600px;
         max-width: calc(50vw - 100px);
         padding: 0;
         background-color: #EBF4FB;
@@ -98,6 +100,7 @@
         padding: 20px;
         text-align: center;
         display: flex;
+        background-color: #E2EEF7;
     }
 
     .search-input {
@@ -181,15 +184,13 @@
     }
 
     .status {
-        display: inline-block;
         margin: 0;
         border-radius: 50%;
         width: 13px;
         height: 13px;
         border: 2px solid white;
         position: relative;
-        right: 16px;
-        top: 23px;
+        bottom: 10px;
     }
 
     .online {
@@ -209,32 +210,35 @@
         flex-grow: 1;
     }
 
-    .add-user-button {
-        margin-left: 20px;
-        background-color: #EF4141;
-        border-radius: 50%;
-        width: 45px;
-        height: 45px;
-        color: white;
-        font-size: 20px;
-        text-align: center;
-        cursor: pointer;
-
-        -webkit-box-shadow: 0px 0px 13px -7px rgba(239,65,65,1);
-        -moz-box-shadow: 0px 0px 13px -7px rgba(239,65,65,1);
-        box-shadow: 0px 0px 13px -7px rgba(239,65,65,1);
-
-        transition: background-color .2s linear;
-    }
-
-    .add-user-button:hover {
-        background-color: #ff6464;
-    }
-
     .add-user-icon {
         position: relative;
         top: 8px;
         left: 2px;
+
+        margin-left: 20px;
+        width: 25px;
+        height: 25px;
+        color: #EF4141;
+        font-size: 20px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .notification-line {
+        display: flex;
+        color: #7e7e7e;
+        font-size: 10px;
+    }
+
+    .notification {
+        margin: 0;
+        border-radius: 50%;
+        width: 13px;
+        height: 13px;
+        background-color: #F92B2B;
+        margin-left: 5px;
+        margin-right: 5px;
+        position: relative;
     }
 
 </style>

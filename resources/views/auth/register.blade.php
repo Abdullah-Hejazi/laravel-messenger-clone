@@ -5,8 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="action-form">
-                <h1 class="form-title">Sign in</h1>
-                <form method="POST" action="{{ route('login') }}">
+                <h1 class="form-title">Register</h1>
+                <form method="POST" action="{{ route('register') }}">
                     @csrf
 
                     <div class="form-group row">
@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="form-group row mb-0 form-action-button">
-                        <button type="submit" class="action-button"> Sign In </button>
+                        <button type="submit" class="action-button"> Register </button>
                         {{-- 
                             @if (Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">

@@ -21,10 +21,13 @@ class MessageController extends Controller {
                     $query->where('sender_id', auth()->user()->id)
                           ->where('reciever_id', $id);
                 });
-            })
-        ->get();
+        })->get();
+        
+        Message::where('sender_id', $id)->where('reciever_id', auth()->user()->id)->where('read', false)->update([
+            'read'  =>  true
+        ]);
 
-        return $messages;
+        return response()->json($messages);
     }
 
     public function send(Request $request, $id) {
@@ -37,5 +40,13 @@ class MessageController extends Controller {
         broadcast(new NewMessage($message));
 
         return response()->json($message);
+    }
+
+    public function read($id) {
+        $message = Message::where('id', $id)->update([
+            'read'      =>      true
+        ]);
+
+        return "";
     }
 }
