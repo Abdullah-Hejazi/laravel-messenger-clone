@@ -2,8 +2,6 @@
 
 [![N|Solid](https://abdullah-hejazi.dev/preview.JPG)](https://abdullah-hejazi.dev/preview.JPG)
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
-
 Laravel Messanger Clone is a web app build using laravel to memic messanger application
 This app is made for practicing purposes
 
@@ -17,6 +15,7 @@ This app is made for practicing purposes
   - Add online/offline status for users (currently it's static)
   - Add more settings
   - Add change theme color option
+  - Add Typing status for the users
 
 
 # How to install and run

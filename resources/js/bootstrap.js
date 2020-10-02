@@ -36,8 +36,7 @@ window.Pusher = require('pusher-js');
 window.Echo = new Echo({
     broadcaster: 'pusher',
     key: 'laravel-messenger-clone',
-    wsHost: "messenger.test",
-    wsPath: "",
+    wsHost: window.location.hostname,
     wsPort: 6001,
     forceTLS: false,
     disableStats: true,
