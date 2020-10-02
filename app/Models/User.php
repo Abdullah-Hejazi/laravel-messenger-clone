@@ -40,4 +40,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isFriendsWith($id) {
+        return \App\Models\Friend::where('user_id', $this->id)->where('friend_id', $id)->first();
+    }
 }

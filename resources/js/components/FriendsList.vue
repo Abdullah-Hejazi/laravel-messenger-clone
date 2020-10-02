@@ -6,7 +6,7 @@
                 <input type="text" name="search" placeholder="Search..." class="search-input" v-model="search">
             </div>
 
-            <v-icon name="user-plus" class="add-user-icon" @click="AddUser" />
+            <v-icon name="user-plus" class="add-user-icon" @click="add_user_dialog = true" />
         </div>
         <div v-for="(friend, index) in friends_list" :key="index" @click="SelectFriend(friend.friend, index)">
             <div :class="currentIndex != index ? 'friend':'friend friend_selected'">
@@ -26,10 +26,21 @@
             </div>
             <div class="divider"></div>
         </div>
+
+        <Modal @onclose="add_user_dialog = false" v-if="add_user_dialog">
+            <div class="add-modal-title">Add a friend</div>
+            <div class="add-modal-box">
+                <input type="email" class="form-input" placeholder="Enter the email" v-model="new_friend_email">
+            </div>
+
+            <div class="add-modal-button" @click="AddFriend">Add Friend</div>
+        </Modal>
     </div>
 </template>
 
 <script>
+    import Modal from './Modal';
+
     export default {
         props: {
             friends: {
@@ -40,11 +51,17 @@
             }
         },
 
+        components: {
+            Modal,
+        },
+
         data() {
             return {
                 currentIndex: 0,
                 friends_list: [],
-                search: ''
+                search: '',
+                add_user_dialog: false,
+                new_friend_email: ''
             }
         },
 
@@ -59,8 +76,8 @@
                 this.$emit('selected', {friend: friend, index: index})
             },
 
-            AddUser: function () {
-                // add user
+            AddFriend: function () {
+                this.$emit('onaddfriend', this.new_friend_email)
             },
 
             SearchUsers: function () {
@@ -239,6 +256,78 @@
         margin-left: 5px;
         margin-right: 5px;
         position: relative;
+    }
+
+    .add-modal-title {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .form-input {
+        background-color: #E5E8ED;
+        color: black;
+        border: none;
+        border-radius: 5px;
+        padding: 16px;
+        font-size: 18px;
+        width: 100%;
+    }
+
+    .form-input:focus {
+        border: none;
+        outline: none;
+    }
+
+    
+    .form-input {
+        margin-top: 10px;
+        border: none;
+        border-radius: 50px;
+        border: 1px solid #ececec;
+        padding: 10px;
+        font-size: 14px;
+        padding-left: 30px;
+        width: 100%;
+        color: #637580;
+    }
+
+    .form-input:focus {
+        border: none;
+        outline: none;
+    }
+
+    ::-webkit-input-placeholder {
+        color: #7C8290;
+    }
+    
+    :-ms-input-placeholder {
+        color: #7C8290;
+    }
+    
+    ::placeholder {
+        color: #7C8290;
+    }
+
+    .add-modal-button {
+        width: 200px;
+        margin: 15px auto;
+        background-color: #F74949;
+        color: white;
+
+        -webkit-box-shadow: 0px 0px 13px -7px rgba(239,65,65,1);
+        -moz-box-shadow: 0px 0px 13px -7px rgba(239,65,65,1);
+        box-shadow: 0px 0px 13px -7px rgba(239,65,65,1);
+
+        padding: 7px 24px 7px 24px;
+        border-radius: 50px;
+        font-size: 20px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .add-modal-button:hover {
+        background-color: #ff5f5f;
     }
 
 </style>

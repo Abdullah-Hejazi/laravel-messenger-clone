@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
-use App\Events\NewMessage;
+use App\Events\MessangerEvent;
 
 class MessageController extends Controller {
     public function __construct() {
@@ -37,7 +37,7 @@ class MessageController extends Controller {
             'text'          =>      $request->text
         ]);
 
-        broadcast(new NewMessage($message));
+        broadcast(new MessangerEvent('message', $message, $message->reciever_id));
 
         return response()->json($message);
     }

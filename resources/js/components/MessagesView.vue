@@ -30,13 +30,15 @@
                 </div>
             </div>
             <div class="messeges-bottom-bar"> 
-                <textarea class="message-input" placeholder="Type Your Message..." v-model="new_message" @keyup.enter="SendMessage"></textarea>
+                <textarea class="message-input" placeholder="Type Your Message..." @keyup="HandleTyping" v-model="new_message" @keyup.enter="SendMessage"></textarea>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import { throttle } from 'throttle-debounce';
+
     export default {
         props: {
             messages: {
@@ -60,12 +62,16 @@
         data () {
             return {
                 new_message: '',
+                debounceFunc: throttle(3000, true, (num) => {
+                    console.log('num:', num);
+                })
             }
         },
 
         methods: {
-            SendMessage() {
-                if(this.new_message == '' || !this.selected_friend) {
+            SendMessage(e) {
+                if(this.new_message.length <= 1 || !this.selected_friend) {
+                    this.new_message = this.new_message.substring(0, this.new_message.length - 1)
                     return
                 }
 
@@ -77,9 +83,15 @@
 
             scrollToBottom() {
                 setTimeout(() => {
-                    this.$refs.feed.scrollTop = this.$refs.feed.scrollHeight
+                    if (this.$refs.feed) {
+                        this.$refs.feed.scrollTop = this.$refs.feed.scrollHeight
+                    }
                 }, 50)
-            }
+            },
+
+            HandleTyping: function (e) {
+                this.debounceFunc(1);
+            },
         },
 
         watch: {

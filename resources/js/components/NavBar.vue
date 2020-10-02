@@ -2,6 +2,14 @@
     <div class="navbar">
         <div class="image-container">
             <img class="profile-image" :src="user.profile_image">
+            <div class="option-button" @click="chat = true; $emit('onselectchat')">
+                <v-icon name="comments" :class="chat ? 'top-bar-item top-bar-item-selected' : 'top-bar-item'" />
+            </div>
+
+            <div class="option-button" @click="chat = false; $emit('onselectrequests')">
+                <v-icon name="user-friends" :class="!chat ? 'top-bar-item top-bar-item-selected' : 'top-bar-item'" />
+                <div class="notification" v-if="requests > 0"> {{ requests }}</div>
+            </div>
         </div>
 
         <div class="menu">
@@ -22,9 +30,20 @@
                 }
             },
 
+            requests: {
+                type: Number,
+                default: 0
+            },
+
             url: {
                 type: String
             },
+        },
+
+        data () {
+            return {
+                chat: true
+            }
         },
 
         methods: {
@@ -69,7 +88,7 @@
 
 .image-container {
     width: 100%;
-    height: 100px;
+    padding-bottom: 10px;
     background-color: #141A26;
 }
 
@@ -107,6 +126,34 @@
 
 .signout-link:visited {
     color: white;
+}
+
+.option-button {
+    text-align: center;
+    cursor: pointer;
+}
+
+.top-bar-item {
+    margin: 30px auto 0px auto;
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+
+.top-bar-item-selected {
+    color: #F04141;
+}
+
+.notification {
+    background-color: rgb(255, 225, 159);
+    color: black;
+    font-size: 12px;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    font-weight: bold;
+    display: inline-block;
 }
 
 </style>

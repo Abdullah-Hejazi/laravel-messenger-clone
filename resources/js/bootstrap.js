@@ -37,6 +37,7 @@ window.Echo = new Echo({
     broadcaster: 'pusher',
     key: 'laravel-messenger-clone',
     wsHost: "messenger.test",
+    wsPath: "",
     wsPort: 6001,
     forceTLS: false,
     disableStats: true,

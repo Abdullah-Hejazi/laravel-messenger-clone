@@ -2,16 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+// use BeyondCode\LaravelWebSockets\Facades\WebSocketsRouter;
+// WebSocketsRouter::webSocket('/test/app/{appKey}', \App\WebSockets\PrivateWebSocketHandler::class);
+
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -25,3 +18,10 @@ Route::get('/messages/{id}', [App\Http\Controllers\MessageController::class, 'in
 Route::post('/messages/{id}', [App\Http\Controllers\MessageController::class, 'send']);
 
 Route::post('/message/{id}/read', [App\Http\Controllers\MessageController::class, 'read']);
+
+
+Route::post('/friends/add', [App\Http\Controllers\FriendRequestController::class, 'add']);
+Route::get('/friends/requests', [App\Http\Controllers\FriendRequestController::class, 'index']);
+Route::post('/friends/requests/{id}/accept', [App\Http\Controllers\FriendRequestController::class, 'accept']);
+Route::post('/friends/requests/{id}/reject', [App\Http\Controllers\FriendRequestController::class, 'reject']);
+Route::post('/friends/requests/{id}/cancel', [App\Http\Controllers\FriendRequestController::class, 'cancel']);
