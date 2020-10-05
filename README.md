@@ -1,6 +1,6 @@
 # Laravel Messanger Clone
 
-[![N|Solid](https://messanger.abdullah-hejazi.com/preview.jpg)](https://messanger.abdullah-hejazi.com)
+[![N|Solid](https://messanger.abdullah-hejazi.com/preview.JPG)](https://messanger.abdullah-hejazi.com)
 
 Laravel Messanger Clone is a web app build using laravel to memic messanger application
 This app is made for practicing purposes.
