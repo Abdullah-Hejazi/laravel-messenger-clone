@@ -154,7 +154,7 @@
     .friend_selected {
         background: rgb(255,255,255);
         background: linear-gradient(90deg, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0) 100%);
-        border-left: 5px solid #FF4C4B;
+        border-left: 5px solid #41a1f0;
     }
 
     .friend-profile-image {
@@ -235,7 +235,7 @@
         margin-left: 20px;
         width: 25px;
         height: 25px;
-        color: #EF4141;
+        color: #41a1f0;
         font-size: 20px;
         text-align: center;
         cursor: pointer;
@@ -252,7 +252,7 @@
         border-radius: 50%;
         width: 13px;
         height: 13px;
-        background-color: #F92B2B;
+        background-color: #41a1f0;
         margin-left: 5px;
         margin-right: 5px;
         position: relative;
@@ -312,7 +312,7 @@
     .add-modal-button {
         width: 200px;
         margin: 15px auto;
-        background-color: #F74949;
+        background-color: #41a1f0;
         color: white;
 
         -webkit-box-shadow: 0px 0px 13px -7px rgba(239,65,65,1);
@@ -327,7 +327,7 @@
     }
 
     .add-modal-button:hover {
-        background-color: #ff5f5f;
+        background-color: #6bbbfd;
     }
 
 </style>

@@ -1,9 +1,13 @@
 # Laravel Messanger Clone
 
-[![N|Solid](https://abdullah-hejazi.dev/preview.JPG)](https://abdullah-hejazi.dev/preview.JPG)
+[![N|Solid](https://messanger.abdullah-hejazi.com/preview.jpg)](https://messanger.abdullah-hejazi.com)
 
 Laravel Messanger Clone is a web app build using laravel to memic messanger application
-This app is made for practicing purposes
+This app is made for practicing purposes.
+
+# Live Preview
+[![N|Solid](https://messanger.abdullah-hejazi.com/live.png)](https://messanger.abdullah-hejazi.com)
+
 
 ### Features
   - Real Time Chat Messaging with sound alerts

@@ -23,7 +23,19 @@
         background-color: #fefefe;
         margin: auto;
         padding: 20px;
-        border: 1px solid #888;
+        border-radius: 10px;
+        box-shadow:
+      0 0.5px 1.2px rgba(0, 0, 0, 0.039),
+      0 1.1px 2.7px rgba(0, 0, 0, 0.055),
+      0 1.9px 4.6px rgba(0, 0, 0, 0.065),
+      0 2.9px 6.9px rgba(0, 0, 0, 0.071),
+      0 4.1px 10px rgba(0, 0, 0, 0.075),
+      0 5.8px 14.2px rgba(0, 0, 0, 0.077),
+      0 8.3px 20.1px rgba(0, 0, 0, 0.077),
+      0 12px 29.2px rgba(0, 0, 0, 0.076),
+      0 18.6px 45px rgba(0, 0, 0, 0.074),
+      0 33px 80px rgba(0, 0, 0, 0.07);
+
         width: 80%;
     }
 

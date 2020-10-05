@@ -110,7 +110,7 @@
 
 .navbar {
     width: 100px;
-    background-color: #181F2E;
+    background-color: #0f0f0f;
     height: 100vh;
     padding: 0;
     display: flex;
@@ -120,13 +120,13 @@
 .image-container {
     width: 100%;
     padding-bottom: 10px;
-    background-color: #141A26;
+    background-color: #0f0f0f;
 }
 
 .menu {
     width: 100%;
     height: 150px;
-    background-color: #202A3F;
+    background-color: #0f0f0f;
     color: white;
     text-align: center;
     display: flex;
@@ -144,7 +144,7 @@
 
 .profile-image {
     border-radius: 50%;
-    border: 1px solid #F04141;
+    border: 2px solid #41a1f0;
     width: 70px;
     height: 70px;
     position: relative;
@@ -173,11 +173,11 @@
 }
 
 .top-bar-item-selected {
-    color: #F04141;
+    color: #41a1f0;
 }
 
 .notification {
-    background-color: rgb(255, 225, 159);
+    background-color: rgb(255, 190, 49);
     color: black;
     font-size: 12px;
     width: 17px;
@@ -198,12 +198,12 @@
 .add-modal-button {
     width: 200px;
     margin: 15px auto;
-    background-color: #F74949;
+    background-color: #41a1f0;
     color: white;
 
-    -webkit-box-shadow: 0px 0px 13px -7px rgba(239,65,65,1);
-    -moz-box-shadow: 0px 0px 13px -7px rgba(239,65,65,1);
-    box-shadow: 0px 0px 13px -7px rgba(239,65,65,1);
+    -webkit-box-shadow: 0px 0px 13px -7px #41a1f0;
+    -moz-box-shadow: 0px 0px 13px -7px #41a1f0;
+    box-shadow: 0px 0px 13px -7px #41a1f0;
 
     padding: 7px 24px 7px 24px;
     border-radius: 50px;
@@ -213,7 +213,7 @@
 }
 
 .add-modal-button:hover {
-    background-color: #ff5f5f;
+    background-color: #5eb6ff;
 }
 
 </style>

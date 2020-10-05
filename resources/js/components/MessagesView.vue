@@ -168,12 +168,12 @@
     }
 
     .message-text-sent {
-        background-color: #F74949;
+        background-color: #41a1f0;
         color: white;
 
-        -webkit-box-shadow: 0px 0px 13px -7px rgba(239,65,65,1);
-        -moz-box-shadow: 0px 0px 13px -7px rgba(239,65,65,1);
-        box-shadow: 0px 0px 13px -7px rgba(239,65,65,1);
+        -webkit-box-shadow: 0px 0px 13px -7px #41a1f0;
+        -moz-box-shadow: 0px 0px 13px -7px #41a1f0;
+        box-shadow: 0px 0px 13px -7px #41a1f0;
     }
 
     .status-section {
