@@ -5,6 +5,6 @@
 
 @section('content')
 <div id="app">
-    <chat-app :user="{{ auth()->user() }}" :url="'{{ url('/') }}'" />
+    <chat-app :main_user="{{ auth()->user() }}" :url="'{{ url('/') }}'" />
 </div>
 @endsection

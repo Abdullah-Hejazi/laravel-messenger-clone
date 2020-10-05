@@ -6,6 +6,7 @@
             @onselectchat="SelectChat"
             @onselectrequests="SelectRequests"
             :requests="recieved_requests.length"
+            @change-picture="ChangePicture"
         />
 
         <FriendsList
@@ -42,7 +43,7 @@
 
     export default {
         props: {
-            user: {
+            main_user: {
                 type: Object,
                 required: true
             },
@@ -65,8 +66,13 @@
                 selected_friend: null,
                 sent_requests: [],
                 recieved_requests: [],
-                friends_list: false
+                friends_list: false,
+                user: null
             }
+        },
+
+        beforeMount() {
+            this.user = this.main_user
         },
 
         mounted() {
@@ -160,6 +166,10 @@
                         }
                     }
                 })
+            },
+
+            ChangePicture: function (image) {
+                this.user.profile_image = image
             },
 
             handleIncomingMessage: function (message) {

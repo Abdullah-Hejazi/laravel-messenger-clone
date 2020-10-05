@@ -6,7 +6,7 @@
         <div v-for="(request, index) in recieved_requests" :key="request.id">
             <div class="friend">
                 <div>
-                    <img :src="request.user.profile_image" :alt="request.user.name" class="friend-profile-image">
+                    <img :src="'images/' + request.user.profile_image" :alt="request.user.name" class="friend-profile-image">
                     <div class="friend-name">{{ request.user.name }}</div>
                 </div>
                 <div class="options-panel">
@@ -24,7 +24,7 @@
         <div v-for="(request, index) in sent_requests" :key="request.id">
             <div class="friend">
                 <div>
-                    <img :src="request.friend.profile_image" :alt="request.friend.name" class="friend-profile-image">
+                    <img :src="'images/' + request.friend.profile_image" :alt="request.friend.name" class="friend-profile-image">
                     <div class="friend-name">{{ request.friend.name }}</div>
                 </div>
 

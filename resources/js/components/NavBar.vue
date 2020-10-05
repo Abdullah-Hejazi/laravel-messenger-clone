@@ -1,7 +1,7 @@
 <template>
     <div class="navbar">
         <div class="image-container">
-            <img class="profile-image" :src="user.profile_image">
+            <img class="profile-image" :src="'images/' + user.profile_image">
             <div class="option-button" @click="chat = true; $emit('onselectchat')">
                 <v-icon name="comments" :class="chat ? 'top-bar-item top-bar-item-selected' : 'top-bar-item'" />
             </div>
@@ -13,13 +13,24 @@
         </div>
 
         <div class="menu">
-            <v-icon name="cog" class="menu-item" />
+            <v-icon name="cog" class="menu-item" @click="select_pimg_dialog = true" />
             <v-icon name="sign-out-alt" class="menu-item" @click="Logout" />
         </div>
+
+        <Modal @onclose="select_pimg_dialog = false" v-if="select_pimg_dialog">
+            <div class="add-modal-title">Change Profile Picture</div>
+            <div class="add-modal-box">
+                <input type="file" class="form-input" id="img" name="img" accept="image/*" ref="selectImage">
+            </div>
+
+            <div class="add-modal-button" @click="ChangePicture">Change Picture</div>
+        </Modal>
     </div>
 </template>
 
 <script>
+    import Modal from './Modal';
+
     export default {
         props: {
             user: {
@@ -40,9 +51,12 @@
             },
         },
 
+        components: { Modal },
+
         data () {
             return {
-                chat: true
+                chat: true,
+                select_pimg_dialog: false
             }
         },
 
@@ -71,6 +85,23 @@
                 return '';
             },
 
+            ChangePicture: function () {
+                var file = this.$refs.selectImage.files[0]
+
+                if (!file) return
+
+                var formData = new FormData();
+                formData.append("image", file);
+
+                axios.post('/settings/picture/upload', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                }).then((response) => {
+                    this.select_pimg_dialog = false
+                    this.$emit('change-picture', response.data.image)
+                })
+            }
         }
     }
 </script>
@@ -154,6 +185,35 @@
     border-radius: 50%;
     font-weight: bold;
     display: inline-block;
+}
+
+.add-modal-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+.add-modal-button {
+    width: 200px;
+    margin: 15px auto;
+    background-color: #F74949;
+    color: white;
+
+    -webkit-box-shadow: 0px 0px 13px -7px rgba(239,65,65,1);
+    -moz-box-shadow: 0px 0px 13px -7px rgba(239,65,65,1);
+    box-shadow: 0px 0px 13px -7px rgba(239,65,65,1);
+
+    padding: 7px 24px 7px 24px;
+    border-radius: 50px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.add-modal-button:hover {
+    background-color: #ff5f5f;
 }
 
 </style>

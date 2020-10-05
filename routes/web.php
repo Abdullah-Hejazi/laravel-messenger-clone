@@ -25,3 +25,6 @@ Route::get('/friends/requests', [App\Http\Controllers\FriendRequestController::c
 Route::post('/friends/requests/{id}/accept', [App\Http\Controllers\FriendRequestController::class, 'accept']);
 Route::post('/friends/requests/{id}/reject', [App\Http\Controllers\FriendRequestController::class, 'reject']);
 Route::post('/friends/requests/{id}/cancel', [App\Http\Controllers\FriendRequestController::class, 'cancel']);
+
+
+Route::post('/settings/picture/upload', [App\Http\Controllers\SettingsController::class, 'upload_pp']);

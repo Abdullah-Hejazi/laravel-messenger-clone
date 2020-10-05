@@ -21,7 +21,7 @@
                         <div class="message" v-else>
                             <div class="message-recieved">
                                 <div class="message-profile">
-                                    <img :src="selected_friend.profile_image" class="message-profile-image">
+                                    <img :src="'images/' + selected_friend.profile_image" class="message-profile-image">
                                 </div>
                                 <div class="message-text">{{message.text}}</div>
                             </div>

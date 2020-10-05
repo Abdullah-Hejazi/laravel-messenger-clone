@@ -11,7 +11,7 @@
         <div v-for="(friend, index) in friends_list" :key="index" @click="SelectFriend(friend.friend, index)">
             <div :class="currentIndex != index ? 'friend':'friend friend_selected'">
                 <div>
-                    <img :src="friend.friend.profile_image" :alt="friend.friend.name" class="friend-profile-image">
+                    <img :src="'images/' + friend.friend.profile_image" :alt="friend.friend.name" class="friend-profile-image">
                     <div class="status online"></div>
                 </div>
                 <div class="friend-info">
